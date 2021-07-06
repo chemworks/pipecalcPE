@@ -1,0 +1,11 @@
+Case "{{.CaseID}}"
+    Gas:
+        Gas flow: {{.GasFlow}} [E3M3D] @ Pressure: {{.Pressure}} [kgf/cm2g], Temperature: {{.Temperature}}[°C], Gas MW: {{.MW}} [g/mol] / Z: {{.Z}}.
+   Liquids:
+        Light Liquid Flow: {{.LightLiquidFlow }} m3/d @ {{.LightLiquidDens }} [kg/m3] / Heavy Liquid Flow: {{.HeavyLiquidFlow }} m3/d @ {{.HeavyLiquidDens}} [kg/m3]
+   Results:
+        Actual Gas flow: {{printf "%.2f" .ActFlow}} [Am3/s] / Total flow: {{printf "%.2f" .TotalFlow}} [m3/s].
+        Actual Gas Dens: {{printf "%.2f" .DensActGas}} [kg/m3] / Dens mix (L/G): {{printf "%.2f" .DensMix}} [kg/m3]
+        Max Vel: {{printf "%.2f" .MaxVel}} [m/s] / Max Vel 14E {{printf "%.2f" .MaxVel14E}} [m/s] / Max Momentum (J=Rho*V2) {{printf "%.2f" .MaxVelMomentum}} [m/s]
+        Required Area: {{printf "%.2f" .ReqArea}} [m2] / Required Area 14E {{printf "%.2f" .ReqArea14E}} [m2] / Req Area Momentum {{printf "%.2f" .ReqAreaMomentum}} [m2]
+        Required Diam: {{printf "%.2f" .ReqDiam}} [in] / Required Diam 14E {{printf "%.2f" .ReqDiam14E}} [in] / Required Diam Momentum {{printf "%.2f" .ReqDiamMomentum}} [in]

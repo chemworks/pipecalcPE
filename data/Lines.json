@@ -1,0 +1,85 @@
+{
+ "Line": [
+  {
+   "Tags": "12-HG002-CA21-B",
+   "Diam": 12,
+   "Id": "HG002",
+   "FluidType": "HG",
+   "ClassMat": "CA",
+   "ClassPres": 2,
+   "CorrotionAl": 1,
+   "Insulation": "",
+   "CasesList": [
+    "Air",
+    "PAMPA_MP",
+    "PAMPA_AP"
+   ],
+   "StrightLine": 0,
+   "Velocities": {
+    "Air": 1.9352420199801947,
+    "HP": 8.89270826114001
+   },
+   "RhoV2": {
+    "Air": 35.30470098618863,
+    "HP": 1929.4433006518598
+   },
+   "CheckDiam": {},
+   "Results": [
+    "Line 12-HG002-CA21-B @ Case Air:\n   Vel: 1.94 [m/s] Rho V^2: 35 [kg/ms2]\n",
+    "Line 12-HG002-CA21-B @ Case HP:\n   Vel: 8.89 [m/s] Rho V^2: 1929 [kg/ms2]\n",
+    "Line 12-HG002-CA21-B @ Case HP:\n   Vel: 8.89 [m/s] Rho V^2: 1929 [kg/ms2]\n"
+   ],
+   "ResultCases": [
+    "Case \"Air\"\n    Gas:\n        Gas flow: 92 [E3M3D] @ Pressure: 7 [kgf/cm2g], Temperature: 25[°C], Gas MW: 28 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 0 m3/d @ 0 [kg/m3] / Heavy Liquid Flow: 0 m3/d @ 0 [kg/m3]\n   Results:\n        Actual Gas flow: 0.14 [Am3/s] / Total flow: 0.14 [m3/s].\n        Actual Gas Dens: 9.43 [kg/m3] / Dens mix (L/G): 9.43 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 39.73 [m/s] / Max Momentum (J=Rho*V2) 19.95 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.00 [m2] / Req Area Momentum 0.01 [m2]\n        Required Diam: 3.93 [in] / Required Diam 14E 2.65 [in] / Required Diam Momentum 3.74 [in]\n",
+    "Case \"HP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 30 [kgf/cm2g], Temperature: 15[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1003 [kg/m3]\n   Results:\n        Actual Gas flow: 0.65 [Am3/s] / Total flow: 0.65 [m3/s].\n        Actual Gas Dens: 24.37 [kg/m3] / Dens mix (L/G): 24.40 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 24.70 [m/s] / Max Momentum (J=Rho*V2) 12.40 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.05 [m2]\n        Required Diam: 8.43 [in] / Required Diam 14E 7.20 [in] / Required Diam Momentum 10.16 [in]\n",
+    "Case \"HP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 30 [kgf/cm2g], Temperature: 15[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1003 [kg/m3]\n   Results:\n        Actual Gas flow: 0.65 [Am3/s] / Total flow: 0.65 [m3/s].\n        Actual Gas Dens: 24.37 [kg/m3] / Dens mix (L/G): 24.40 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 24.70 [m/s] / Max Momentum (J=Rho*V2) 12.40 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.05 [m2]\n        Required Diam: 8.43 [in] / Required Diam 14E 7.20 [in] / Required Diam Momentum 10.16 [in]\n"
+   ]
+  },
+  {
+   "Tags": "3-HG003-CA21-B",
+   "Diam": 3,
+   "Id": "HG003",
+   "FluidType": "HG",
+   "ClassMat": "CA",
+   "ClassPres": 2,
+   "CorrotionAl": 1,
+   "Insulation": "",
+   "CasesList": [
+    "Air"
+   ],
+   "StrightLine": 0,
+   "Velocities": {
+    "Air": 30.963872319683116
+   },
+   "RhoV2": {
+    "Air": 9038.003452464289
+   },
+   "CheckDiam": {},
+   "Results": [
+    "Line 3-HG003-CA21-B @ Case Air:\n   Vel: 30.96 [m/s] Rho V^2: 9038 [kg/ms2]\n"
+   ],
+   "ResultCases": [
+    "Case \"Air\"\n    Gas:\n        Gas flow: 92 [E3M3D] @ Pressure: 7 [kgf/cm2g], Temperature: 25[°C], Gas MW: 28 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 0 m3/d @ 0 [kg/m3] / Heavy Liquid Flow: 0 m3/d @ 0 [kg/m3]\n   Results:\n        Actual Gas flow: 0.14 [Am3/s] / Total flow: 0.14 [m3/s].\n        Actual Gas Dens: 9.43 [kg/m3] / Dens mix (L/G): 9.43 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 39.73 [m/s] / Max Momentum (J=Rho*V2) 19.95 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.00 [m2] / Req Area Momentum 0.01 [m2]\n        Required Diam: 3.93 [in] / Required Diam 14E 2.65 [in] / Required Diam Momentum 3.74 [in]\n"
+   ]
+  },
+  {
+   "Tags": "X-HG003-CAXX-B",
+   "Diam": 0,
+   "Id": "HG003",
+   "FluidType": "HG",
+   "ClassMat": "CA",
+   "ClassPres": 0,
+   "CorrotionAl": 0,
+   "Insulation": "",
+   "CasesList": [
+    ""
+   ],
+   "StrightLine": 0,
+   "Velocities": null,
+   "RhoV2": null,
+   "CheckDiam": null,
+   "Results": null,
+   "ResultCases": null
+  }
+ ]
+}
