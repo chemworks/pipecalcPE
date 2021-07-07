@@ -132,34 +132,40 @@ func (app *chengPipesApp) getFilenames() (string, string) {
 
 // TODO DOC
 func (app *chengPipesApp) setFrmCasesToCases() {
-	actName := app.Case.CaseID
-	linesLst := app.Cases.GetCasesList()
-	idx := model.SliceItemIdx(linesLst, actName)
-	app.Cases.Cas[idx].CaseID = app.CaseTag.Text
-	app.Cases.Cas[idx].GasFlow = StringToFloat64(app.GasFlow.Text)
-	app.Cases.Cas[idx].Pressure = StringToFloat64(app.Press.Text)
-	app.Cases.Cas[idx].Temperature = StringToFloat64(app.Temp.Text)
-	app.Cases.Cas[idx].MW = StringToFloat64(app.MW.Text)
-	app.Cases.Cas[idx].Z = StringToFloat64(app.Z.Text)
-	if app.MultyFlow.Selected == "True" {
-		app.Cases.Cas[idx].Multiflow = true
-	} else {
-		app.Cases.Cas[idx].Multiflow = false
+	if app.CaseTag.Text != "" {
+		actName := app.Case.CaseID
+		linesLst := app.Cases.GetCasesList()
+		idx := model.SliceItemIdx(linesLst, actName)
+		app.Cases.Cas[idx].CaseID = app.CaseTag.Text
+		app.Cases.Cas[idx].GasFlow = StringToFloat64(app.GasFlow.Text)
+		app.Cases.Cas[idx].Pressure = StringToFloat64(app.Press.Text)
+		app.Cases.Cas[idx].Temperature = StringToFloat64(app.Temp.Text)
+		app.Cases.Cas[idx].MW = StringToFloat64(app.MW.Text)
+		app.Cases.Cas[idx].Z = StringToFloat64(app.Z.Text)
+		if app.MultyFlow.Selected == "True" {
+			app.Cases.Cas[idx].Multiflow = true
+		} else {
+			app.Cases.Cas[idx].Multiflow = false
+		}
+		app.Cases.Cas[idx].LightLiquidFlow = StringToFloat64(app.LlFlow.Text)
+		app.Cases.Cas[idx].LightLiquidDens = StringToFloat64(app.LlDens.Text)
+		app.Cases.Cas[idx].HeavyLiquidFlow = StringToFloat64(app.HlFlow.Text)
+		app.Cases.Cas[idx].HeavyLiquidDens = StringToFloat64(app.HlDens.Text)
+		app.Cases.Cas[idx].Results = app.ResultsEntryCases.Text
 	}
-	app.Cases.Cas[idx].LightLiquidFlow = StringToFloat64(app.LlFlow.Text)
-	app.Cases.Cas[idx].LightLiquidDens = StringToFloat64(app.LlDens.Text)
-	app.Cases.Cas[idx].HeavyLiquidFlow = StringToFloat64(app.HlFlow.Text)
-	app.Cases.Cas[idx].HeavyLiquidDens = StringToFloat64(app.HlDens.Text)
-	app.Cases.Cas[idx].Results = app.ResultsEntryCases.Text
 }
 
 func (app *chengPipesApp) setFrmLinesToLines() {
-	actName := app.Line.Tag
-	linesLst := app.Lines.GetLineList()
-	idx := model.SliceItemIdx(linesLst, actName)
-	app.Lines.Line[idx].Tag = app.LineTag.Text
-	app.Lines.Line[idx].CasesList = strings.Split(app.LineCases.Text, ",")
-	app.Lines.Line[idx].Results = app.Line.Results
+	if app.LineTag.Text != "" {
+		actName := app.Line.Tag
+		fmt.Println("actName", actName)
+		linesLst := app.Lines.GetLineList()
+		idx := model.SliceItemIdx(linesLst, actName)
+		fmt.Println("idx", idx)
+		app.Lines.Line[idx].Tag = app.LineTag.Text
+		app.Lines.Line[idx].CasesList = strings.Split(app.LineCases.Text, ",")
+		app.Lines.Line[idx].Results = app.Line.Results
+	}
 }
 
 // Method to ser the selected pipe to the forms
@@ -177,47 +183,6 @@ func (app *chengPipesApp) setCase(singleCase *model.Case) {
 	// first we add the single case to app.Case actual current case
 	app.Case = singleCase
 	app.CaseTag.SetText(app.Case.CaseID)
-	// if app.Case.GasFlow >= 0 {
-	// 	valGas := fmt.Sprintf("%.2f", app.Case.GasFlow)
-	// 	app.GasFlow.SetText(valGas)
-	// } else {
-	// 	app.GasFlow.SetPlaceHolder("")
-	// }
-
-	// if app.Case.Pressure >= 0 {
-	// 	valPres := fmt.Sprintf("%.2f", app.Case.Pressure)
-	// 	app.Press.SetText(valPres)
-	// } else {
-	// 	app.Press.SetPlaceHolder("")
-	// }
-
-	// if app.Case.Temperature >= 0 {
-	// 	valTemp := fmt.Sprintf("%.2f", app.Case.Temperature)
-	// 	app.Temp.SetText(valTemp)
-	// } else {
-	// 	app.Temp.SetPlaceHolder("")
-	// }
-	// if app.Case.MW >= 0 {
-	// 	valMw := fmt.Sprintf("%.2f", app.Case.MW)
-	// 	app.MW.SetText(valMw)
-	// } else {
-	// 	app.MW.SetPlaceHolder("")
-	// }
-
-	// if app.Case.MW >= 0 {
-	// 	valMw := fmt.Sprintf("%.2f", app.Case.MW)
-	// 	app.MW.SetText(valMw)
-	// } else {
-	// 	app.MW.SetPlaceHolder("")
-	// }
-
-	// if app.Case.Z >= 0 {
-	// 	valMw := fmt.Sprintf("%.2f", app.Case.Z)
-	// 	app.Z.SetText(valMw)
-	// } else {
-	// 	app.Z.SetPlaceHolder("")
-	// }
-	// set data for MultyFlow, avoid comparion with bool
 	setFloat64Entry(app.GasFlow, app.Case.GasFlow)
 	setFloat64Entry(app.Temp, app.Case.Temperature)
 	setFloat64Entry(app.Press, app.Case.Pressure)
@@ -232,18 +197,6 @@ func (app *chengPipesApp) setCase(singleCase *model.Case) {
 		setFloat64Entry(app.HlFlow, app.Case.HeavyLiquidFlow)
 		setFloat64Entry(app.LlDens, app.Case.LightLiquidDens)
 		setFloat64Entry(app.HlDens, app.Case.HeavyLiquidDens)
-		//valllflow := fmt.Sprintf("%.2f", app.Case.LightLiquidFlow) //
-		// // app.LlFlow.Hidden(false)
-		// //app.LlFlow.SetText(valllflow)
-
-		// valhlflow := fmt.Sprintf("%.2f", app.Case.HeavyLiquidFlow)
-		// app.HlFlow.SetText(valhlflow)
-
-		// vallldens := fmt.Sprintf("%.2f", app.Case.LightLiquidDens)
-		// app.LlDens.SetText(vallldens)
-
-		// valhldens := fmt.Sprintf("%.2f", app.Case.HeavyLiquidDens)
-		// app.HlDens.SetText(valhldens)
 	} else {
 		app.MultyFlow.SetSelected("False")
 		setFloat64Entry(app.LlFlow, 0.0)
@@ -701,6 +654,12 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		widget.NewFormItem("Results", app.ResultsEntryCases),
 		widget.NewFormItem("", widget.NewButton("Calc", func() {
 			// TODO El Nombre nada claro
+			if app.CTotal.Text != "" {
+				// TODO FIXME: must Be calculated
+				// SET frm to Croma
+				app.MW.SetText(app.CTotal.Text)
+				app.Z.SetText(app.CTotal.Text)
+			}
 			app.setFrmCasesToCases()
 			app.Cases.CalcAll()
 			fmt.Println("Data refresh", app.ResultsEntryCases.Text)
@@ -756,32 +715,39 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 }
 
 func (app *chengPipesApp) RefreshLines() {
-	linesLst := app.Lines.GetLineList()
-	idx := model.SliceItemIdx(linesLst, app.Line.Tag)
-	app.LineTag.SetText(app.Lines.Line[idx].Tag)
-	app.LineCases.SetText(strings.Join(app.Lines.Line[idx].CasesList, ", "))
-	app.ResultsEntryLines.SetText(strings.Join(app.Lines.Line[idx].Results, "\n"))
-	app.ResultsEntryLines.Wrapping = fyne.TextWrapOff
+	if app.LineTag.Text != "" {
+
+		linesLst := app.Lines.GetLineList()
+		idx := model.SliceItemIdx(linesLst, app.Line.Tag) // Get index of the actual case
+		// Set the actual case
+		fmt.Println("idx", idx)
+		app.LineTag.SetText(app.Lines.Line[idx].Tag)
+		app.LineCases.SetText(strings.Join(app.Lines.Line[idx].CasesList, ", "))
+		app.ResultsEntryLines.SetText(strings.Join(app.Lines.Line[idx].Results, "\n"))
+		app.ResultsEntryLines.Wrapping = fyne.TextWrapOff
+	}
 }
 
 func (app *chengPipesApp) RefreshCases() {
-	casesLst := app.Cases.GetCasesList()
-	idx := model.SliceItemIdx(casesLst, app.Case.CaseID)
-	setFloat64Entry(app.GasFlow, app.Cases.Cas[idx].GasFlow)
-	setFloat64Entry(app.Press, app.Cases.Cas[idx].Pressure)
-	setFloat64Entry(app.Temp, app.Cases.Cas[idx].Temperature)
-	setFloat64Entry(app.MW, app.Cases.Cas[idx].MW)
-	setFloat64Entry(app.Z, app.Cases.Cas[idx].Z)
-	setFloat64Entry(app.LlFlow, app.Cases.Cas[idx].LightLiquidFlow)
-	setFloat64Entry(app.LlDens, app.Cases.Cas[idx].LightLiquidDens)
-	setFloat64Entry(app.HlFlow, app.Cases.Cas[idx].HeavyLiquidFlow)
-	setFloat64Entry(app.HlDens, app.Cases.Cas[idx].HeavyLiquidDens)
-	app.ResultsEntryCases.SetText(app.Cases.Cas[idx].Results)
-
+	if app.CaseTag.Text != "" {
+		casesLst := app.Cases.GetCasesList()
+		idx := model.SliceItemIdx(casesLst, app.Case.CaseID)
+		setFloat64Entry(app.GasFlow, app.Cases.Cas[idx].GasFlow)
+		setFloat64Entry(app.Press, app.Cases.Cas[idx].Pressure)
+		setFloat64Entry(app.Temp, app.Cases.Cas[idx].Temperature)
+		setFloat64Entry(app.MW, app.Cases.Cas[idx].MW)
+		setFloat64Entry(app.Z, app.Cases.Cas[idx].Z)
+		setFloat64Entry(app.LlFlow, app.Cases.Cas[idx].LightLiquidFlow)
+		setFloat64Entry(app.LlDens, app.Cases.Cas[idx].LightLiquidDens)
+		setFloat64Entry(app.HlFlow, app.Cases.Cas[idx].HeavyLiquidFlow)
+		setFloat64Entry(app.HlDens, app.Cases.Cas[idx].HeavyLiquidDens)
+		app.ResultsEntryCases.SetText(app.Cases.Cas[idx].Results)
+	}
 }
 
 func (app *chengPipesApp) RefreshAll() {
-	fmt.Println("RefreshAll--------------------------------------------")
+	// TODO FIXME Some errror when not selected any line
+	fmt.Println("RefreshAll------FIXEM")
 	app.RefreshLines()
 	app.RefreshCases()
 }
