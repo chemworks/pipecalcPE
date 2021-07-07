@@ -424,7 +424,6 @@ func (l *Line) Calc(c *CaseList) {
 	l.ResultsCases = []string{}
 	l.Velocities = make(map[string]float64)
 	l.RhoV2 = make(map[string]float64)
-	fmt.Println("Vel", l.Velocities)
 	if (l.CasesList[0]) != "" {
 		totalCaseLst := c.GetCasesList()
 		fmt.Println("Cases", l.CasesList)
