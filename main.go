@@ -45,6 +45,7 @@ func widgetNewEntry(s string) *widget.Entry {
 	w.Wrapping = fyne.TextWrapOff
 	return w
 }
+
 func setFloat64Entry(e *widget.Entry, v float64) {
 	if v > 0 {
 		//val := fmt.Sprintf("%.2f", v)
@@ -76,25 +77,47 @@ type chengPipesApp struct {
 	MultyFlow                            *widget.RadioGroup
 	LlFlow, HlFlow, LlDens, HlDens       *widget.Entry
 	// Cromas
-	CC1  *widget.Entry
-	CC2  *widget.Entry
-	CC3  *widget.Entry
-	CiC4 *widget.Entry
-	CnC4 *widget.Entry
-	CiC5 *widget.Entry
-	CnC5 *widget.Entry
-	CC6  *widget.Entry
-	CC7  *widget.Entry
-	CC8  *widget.Entry
-	CN2  *widget.Entry
-	CCO2 *widget.Entry
-	CH2O *widget.Entry
-	CSH2 *widget.Entry
+	CC1    *widget.Entry
+	CC2    *widget.Entry
+	CC3    *widget.Entry
+	CiC4   *widget.Entry
+	CnC4   *widget.Entry
+	CiC5   *widget.Entry
+	CnC5   *widget.Entry
+	CC6    *widget.Entry
+	CC7    *widget.Entry
+	CC8    *widget.Entry
+	CN2    *widget.Entry
+	CCO2   *widget.Entry
+	CH2O   *widget.Entry
+	CSH2   *widget.Entry
+	CTotal *widget.Entry
 	// Program data
 	SavePath string
 	// Return widget for results
 	ResultsEntryCases *widget.Entry
 	ResultsEntryLines *widget.Entry
+}
+
+// Sum all of the components for total
+func (app *chengPipesApp) sumCroma() {
+	c1 := StringToFloat64(app.CC1.Text)
+	c2 := StringToFloat64(app.CC2.Text)
+	c3 := StringToFloat64(app.CC3.Text)
+	ci4 := StringToFloat64(app.CiC4.Text)
+	cn4 := StringToFloat64(app.CnC4.Text)
+	ci5 := StringToFloat64(app.CiC5.Text)
+	cn5 := StringToFloat64(app.CnC5.Text)
+	c6 := StringToFloat64(app.CC6.Text)
+	c7 := StringToFloat64(app.CC7.Text)
+	c8 := StringToFloat64(app.CC8.Text)
+	cn2 := StringToFloat64(app.CN2.Text)
+	cco2 := StringToFloat64(app.CCO2.Text)
+	ch2o := StringToFloat64(app.CH2O.Text)
+	csh2 := StringToFloat64(app.CSH2.Text)
+	sum := c1 + c2 + c3 + ci4 + cn4 + ci5 + cn5 + c6 + c7 + c8 + cn2 + cco2 + ch2o + csh2
+	sumtxt := fmt.Sprintf("%v", sum)
+	app.CTotal.SetText(sumtxt)
 }
 
 func (app *chengPipesApp) getFilenames() (string, string) {
@@ -488,21 +511,162 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.ListCases.Refresh()
 		}
 	}
-	// setting from to croma
+	// setting from to croma and his functions on change
 	app.CC1 = widgetNewEntry("100")
+	app.CC1.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CC2 = widgetNewEntry("0")
+	app.CC2.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CC3 = widgetNewEntry("0")
+	app.CC3.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CiC4 = widgetNewEntry("0")
+	app.CiC4.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CnC4 = widgetNewEntry("0")
+	app.CnC4.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CiC5 = widgetNewEntry("0")
+	app.CiC5.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CnC5 = widgetNewEntry("0")
+	app.CnC5.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CC6 = widgetNewEntry("0")
+	app.CC6.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CC7 = widgetNewEntry("0")
+	app.CC7.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CC8 = widgetNewEntry("0")
+	app.CC8.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CN2 = widgetNewEntry("0")
+	app.CN2.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CCO2 = widgetNewEntry("0")
+	app.CCO2.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CH2O = widgetNewEntry("0")
+	app.CH2O.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
 	app.CSH2 = widgetNewEntry("0")
+	app.CSH2.OnChanged = func(s string) {
+		if s != "" {
+			app.sumCroma()
+			app.CTotal.Refresh()
+		}
+		if s == "" {
+			app.CTotal.SetText(s)
+			app.CTotal.Refresh()
+		}
+	}
+	app.CTotal = widgetNewEntry("0")
 
 	app.ResultsEntryCases = widget.NewMultiLineEntry()
 	app.ResultsEntryCases.Wrapping = fyne.TextWrapOff
@@ -552,7 +716,6 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		widget.NewFormItem("% or Mol Frac n-C4H10", app.CnC4),
 		widget.NewFormItem("% or Mol Frac i-C5H12", app.CiC5),
 		widget.NewFormItem("% or Mol Frac n-C5H12", app.CnC5),
-		widget.NewFormItem("% or Mol Frac n-C5H12", app.CC6),
 		widget.NewFormItem("% or Mol Frac n-C6H14", app.CC6),
 		widget.NewFormItem("% or Mol Frac n-C7H16", app.CC7),
 		widget.NewFormItem("% or Mol Frac n-C8H18", app.CC8),
@@ -560,6 +723,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		widget.NewFormItem("% or Mol Frac CO2", app.CCO2),
 		widget.NewFormItem("% or Mol Frac H2O", app.CH2O),
 		widget.NewFormItem("% or Mol Frac SH2", app.CSH2),
+		widget.NewFormItem("Total % or Mol ", app.CTotal),
 	)
 	leftLines := container.NewBorder(toolbarLines, nil, app.ListLines, nil)
 	middleLines := container.NewHBox(leftLines, linesDetails)
