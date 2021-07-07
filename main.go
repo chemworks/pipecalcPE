@@ -9,8 +9,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/chemworks/pipecalcPE/model"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
@@ -19,6 +17,8 @@ import (
 	"fyne.io/fyne/v2/storage"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	chengcroma "github.com/chemworks/croma"
+	"github.com/chemworks/pipecalcPE/model"
 )
 
 const (
@@ -59,13 +59,13 @@ func setFloat64Entry(e *widget.Entry, v float64) {
 // Make the items to the Main App, this will be modified later
 type chengPipesApp struct {
 	// All lines And Cases
-	Lines *model.Lines
-	Cases *model.CaseList
-	//Cromas []*chengcroma.Croma
+	Lines  *model.Lines
+	Cases  *model.CaseList
+	Cromas []*chengcroma.Croma
 	// Current Line and current case
-	Line *model.Line
-	Case *model.Case
-	//	Croma []*chengcroma.Croma
+	Line  *model.Line
+	Case  *model.Case
+	Croma *chengcroma.Croma
 	// Displayed items on ui for Lines
 	ListLines *widget.List
 	LineTag   *widget.Entry
@@ -75,6 +75,21 @@ type chengPipesApp struct {
 	CaseTag, GasFlow, Press, Temp, MW, Z *widget.Entry
 	MultyFlow                            *widget.RadioGroup
 	LlFlow, HlFlow, LlDens, HlDens       *widget.Entry
+	// Cromas
+	CC1  *widget.Entry
+	CC2  *widget.Entry
+	CC3  *widget.Entry
+	CiC4 *widget.Entry
+	CnC4 *widget.Entry
+	CiC5 *widget.Entry
+	CnC5 *widget.Entry
+	CC6  *widget.Entry
+	CC7  *widget.Entry
+	CC8  *widget.Entry
+	CN2  *widget.Entry
+	CCO2 *widget.Entry
+	CH2O *widget.Entry
+	CSH2 *widget.Entry
 	// Program data
 	SavePath string
 	// Return widget for results
@@ -473,6 +488,22 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.ListCases.Refresh()
 		}
 	}
+	// setting from to croma
+	app.CC1 = widgetNewEntry("100")
+	app.CC2 = widgetNewEntry("0")
+	app.CC3 = widgetNewEntry("0")
+	app.CiC4 = widgetNewEntry("0")
+	app.CnC4 = widgetNewEntry("0")
+	app.CiC5 = widgetNewEntry("0")
+	app.CnC5 = widgetNewEntry("0")
+	app.CC6 = widgetNewEntry("0")
+	app.CC7 = widgetNewEntry("0")
+	app.CC8 = widgetNewEntry("0")
+	app.CN2 = widgetNewEntry("0")
+	app.CCO2 = widgetNewEntry("0")
+	app.CH2O = widgetNewEntry("0")
+	app.CSH2 = widgetNewEntry("0")
+
 	app.ResultsEntryCases = widget.NewMultiLineEntry()
 	app.ResultsEntryCases.Wrapping = fyne.TextWrapOff
 	//		widget.NewFormItem("Cases", app.LineCases),
@@ -513,11 +544,28 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		})),
 	)
 
+	cromaDet := widget.NewForm(
+		widget.NewFormItem("% or Mol Frac CH4", app.CC1),
+		widget.NewFormItem("% or Mol Frac C2H6", app.CC2),
+		widget.NewFormItem("% or Mol Frac C3H8", app.CC3),
+		widget.NewFormItem("% or Mol Frac i-C4H10", app.CiC4),
+		widget.NewFormItem("% or Mol Frac n-C4H10", app.CnC4),
+		widget.NewFormItem("% or Mol Frac i-C5H12", app.CiC5),
+		widget.NewFormItem("% or Mol Frac n-C5H12", app.CnC5),
+		widget.NewFormItem("% or Mol Frac n-C5H12", app.CC6),
+		widget.NewFormItem("% or Mol Frac n-C6H14", app.CC6),
+		widget.NewFormItem("% or Mol Frac n-C7H16", app.CC7),
+		widget.NewFormItem("% or Mol Frac n-C8H18", app.CC8),
+		widget.NewFormItem("% or Mol Frac N2", app.CN2),
+		widget.NewFormItem("% or Mol Frac CO2", app.CCO2),
+		widget.NewFormItem("% or Mol Frac H2O", app.CH2O),
+		widget.NewFormItem("% or Mol Frac SH2", app.CSH2),
+	)
 	leftLines := container.NewBorder(toolbarLines, nil, app.ListLines, nil)
 	middleLines := container.NewHBox(leftLines, linesDetails)
 
 	leftCases := container.NewBorder(toolbarCases, nil, app.ListCases, nil)
-	middleCases := container.NewHBox(leftCases, casesDetails)
+	middleCases := container.NewHBox(leftCases, casesDetails, cromaDet)
 	//	containerLines := container.NewBorder(toolbarLines, nil, hboxLines, nil) //app.ListLines, linesDetails)
 	// containerLines := container.NewBorder(toolbarLines, nil, app.ListLines, linesDetails) //app.ListLines, linesDetails)
 	//containerLines := container.New(
@@ -662,7 +710,7 @@ func main() {
 	pipes := chengPipesApp{Lines: lines, Cases: cases}
 
 	win.SetContent(pipes.makeUI(win))
-	win.Resize(fyne.NewSize(750, 750))
+	//win.Resize(fyne.NewSize(1000, 1000))
 	win.ShowAndRun()
 }
 func Exists(name string) bool {
