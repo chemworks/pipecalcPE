@@ -17,22 +17,24 @@
    "StrightLine": 0,
    "Velocities": {
     "Air": 1.9352420199801947,
-    "HP": 8.89270826114001
+    "PAMPA_AP": 3.445675923267408,
+    "PAMPA_MP": 8.636960611907597
    },
    "RhoV2": {
     "Air": 35.30470098618863,
-    "HP": 1929.4433006518598
+    "PAMPA_AP": 918.5962071376066,
+    "PAMPA_MP": 2302.5610753816377
    },
    "CheckDiam": {},
    "Results": [
     "Line 12-HG002-CA21-B @ Case Air:\n   Vel: 1.94 [m/s] Rho V^2: 35 [kg/ms2]\n",
-    "Line 12-HG002-CA21-B @ Case HP:\n   Vel: 8.89 [m/s] Rho V^2: 1929 [kg/ms2]\n",
-    "Line 12-HG002-CA21-B @ Case HP:\n   Vel: 8.89 [m/s] Rho V^2: 1929 [kg/ms2]\n"
+    "Line 12-HG002-CA21-B @ Case PAMPA_MP:\n   Vel: 8.64 [m/s] Rho V^2: 2303 [kg/ms2]\n",
+    "Line 12-HG002-CA21-B @ Case PAMPA_AP:\n   Vel: 3.45 [m/s] Rho V^2: 919 [kg/ms2]\n"
    ],
    "ResultCases": [
     "Case \"Air\"\n    Gas:\n        Gas flow: 92 [E3M3D] @ Pressure: 7 [kgf/cm2g], Temperature: 25[°C], Gas MW: 28 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 0 m3/d @ 0 [kg/m3] / Heavy Liquid Flow: 0 m3/d @ 0 [kg/m3]\n   Results:\n        Actual Gas flow: 0.14 [Am3/s] / Total flow: 0.14 [m3/s].\n        Actual Gas Dens: 9.43 [kg/m3] / Dens mix (L/G): 9.43 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 39.73 [m/s] / Max Momentum (J=Rho*V2) 19.95 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.00 [m2] / Req Area Momentum 0.01 [m2]\n        Required Diam: 3.93 [in] / Required Diam 14E 2.65 [in] / Required Diam Momentum 3.74 [in]\n",
-    "Case \"HP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 30 [kgf/cm2g], Temperature: 15[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1003 [kg/m3]\n   Results:\n        Actual Gas flow: 0.65 [Am3/s] / Total flow: 0.65 [m3/s].\n        Actual Gas Dens: 24.37 [kg/m3] / Dens mix (L/G): 24.40 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 24.70 [m/s] / Max Momentum (J=Rho*V2) 12.40 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.05 [m2]\n        Required Diam: 8.43 [in] / Required Diam 14E 7.20 [in] / Required Diam Momentum 10.16 [in]\n",
-    "Case \"HP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 30 [kgf/cm2g], Temperature: 15[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1003 [kg/m3]\n   Results:\n        Actual Gas flow: 0.65 [Am3/s] / Total flow: 0.65 [m3/s].\n        Actual Gas Dens: 24.37 [kg/m3] / Dens mix (L/G): 24.40 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 24.70 [m/s] / Max Momentum (J=Rho*V2) 12.40 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.05 [m2]\n        Required Diam: 8.43 [in] / Required Diam 14E 7.20 [in] / Required Diam Momentum 10.16 [in]\n"
+    "Case \"PAMPA_MP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 35 [kgf/cm2g], Temperature: 50[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 20 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 300 m3/d @ 1005 [kg/m3]\n   Results:\n        Actual Gas flow: 0.63 [Am3/s] / Total flow: 0.63 [m3/s].\n        Actual Gas Dens: 25.24 [kg/m3] / Dens mix (L/G): 30.87 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 21.96 [m/s] / Max Momentum (J=Rho*V2) 11.02 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.06 [m2]\n        Required Diam: 8.31 [in] / Required Diam 14E 7.53 [in] / Required Diam Momentum 10.62 [in]\n",
+    "Case \"PAMPA_AP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 90 [kgf/cm2g], Temperature: 50[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 20 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 300 m3/d @ 1005 [kg/m3]\n   Results:\n        Actual Gas flow: 0.25 [Am3/s] / Total flow: 0.25 [m3/s].\n        Actual Gas Dens: 63.83 [kg/m3] / Dens mix (L/G): 77.37 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 13.87 [m/s] / Max Momentum (J=Rho*V2) 6.96 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.02 [m2] / Req Area Momentum 0.04 [m2]\n        Required Diam: 5.25 [in] / Required Diam 14E 5.98 [in] / Required Diam Momentum 8.44 [in]\n"
    ]
   },
   {
@@ -63,10 +65,29 @@
    ]
   },
   {
-   "Tags": "X-HG003-CAXX-B",
+   "Tags": "X-HG004-CAXX-B",
    "Diam": 0,
-   "Id": "HG003",
+   "Id": "HG004",
    "FluidType": "HG",
+   "ClassMat": "CA",
+   "ClassPres": 0,
+   "CorrotionAl": 0,
+   "Insulation": "",
+   "CasesList": [
+    ""
+   ],
+   "StrightLine": 0,
+   "Velocities": {},
+   "RhoV2": {},
+   "CheckDiam": null,
+   "Results": [],
+   "ResultCases": []
+  },
+  {
+   "Tags": "X-XX00X-CAXX-B",
+   "Diam": 0,
+   "Id": "XX00X",
+   "FluidType": "XX",
    "ClassMat": "CA",
    "ClassPres": 0,
    "CorrotionAl": 0,
