@@ -77,21 +77,7 @@ type chengPipesApp struct {
 	MultyFlow                            *widget.RadioGroup
 	LlFlow, HlFlow, LlDens, HlDens       *widget.Entry
 	// Cromas
-	CC1    *widget.Entry
-	CC2    *widget.Entry
-	CC3    *widget.Entry
-	CiC4   *widget.Entry
-	CnC4   *widget.Entry
-	CiC5   *widget.Entry
-	CnC5   *widget.Entry
-	CC6    *widget.Entry
-	CC7    *widget.Entry
-	CC8    *widget.Entry
-	CN2    *widget.Entry
-	CCO2   *widget.Entry
-	CH2O   *widget.Entry
-	CSH2   *widget.Entry
-	CTotal *widget.Entry
+	CC1, CC2, CC3, CiC4, CnC4, CiC5, CnC5, CC6, CC7, CC8, CN2, CCO2, CH2O, CSH2, CTotal *widget.Entry
 	// Program data
 	SavePath string
 	// Return widget for results
@@ -143,9 +129,10 @@ func (app *chengPipesApp) setCromaToCase() {
 	app.Case.Croma = map[string]float64{}
 	app.Case.Croma = b.CromaNorm()
 	b.Calc(app.Case.Pressure, app.Case.Temperature)
-	app.Case.MW = b.MW
-	app.Case.Z = b.Z
+	setFloat64Entry(app.MW, b.MW)
+	setFloat64Entry(app.Z, b.Z)
 }
+
 func (app *chengPipesApp) getFilenames() (string, string) {
 	if app.SavePath != "" {
 		fileC := compFileName(app.SavePath, fileNameCases)
