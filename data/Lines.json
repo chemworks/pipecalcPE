@@ -11,8 +11,8 @@
    "Insulation": "",
    "CasesList": [
     "Air",
-    "PAMPA_MP",
-    "PAMPA_AP"
+    " PAMPA_MP",
+    " PAMPA_AP"
    ],
    "StrightLine": 0,
    "Velocities": {

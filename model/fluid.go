@@ -2,7 +2,6 @@ package model
 
 import (
 	"errors"
-	"fmt"
 	"math"
 )
 
@@ -134,7 +133,6 @@ func ConvFlowStdToActInKgfcm2(Pr, Tr, Flows float64) float64 {
 // Returns Am3/s
 func ConvFlowE3M3dToActInKgfcm2(Pr, Tr, Flows float64) float64 {
 	Flows = Flows * 1000 / (24 * 60 * 60)
-	fmt.Println("Flow", Flows)
 	return ConvFlowStdToActInKgfcm2(Pr, Tr, Flows)
 }
 

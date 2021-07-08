@@ -184,7 +184,6 @@ func (app *chengPipesApp) setFrmCasesToCases() {
 func (app *chengPipesApp) setFrmLinesToLines() {
 	if app.LineTag.Text != "" {
 		actName := app.Line.Tag
-		fmt.Println("actName", actName)
 		linesLst := app.Lines.GetLineList()
 		idx := model.SliceItemIdx(linesLst, actName)
 		fmt.Println("idx", idx)
@@ -686,7 +685,6 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			}
 			app.setFrmCasesToCases()
 			app.Cases.CalcAll()
-			fmt.Println("Data refresh", app.ResultsEntryCases.Text)
 			app.RefreshAll()
 		})),
 	)
@@ -744,7 +742,6 @@ func (app *chengPipesApp) RefreshLines() {
 		linesLst := app.Lines.GetLineList()
 		idx := model.SliceItemIdx(linesLst, app.Line.Tag) // Get index of the actual case
 		// Set the actual case
-		fmt.Println("idx", idx)
 		app.LineTag.SetText(app.Lines.Line[idx].Tag)
 		app.LineCases.SetText(strings.Join(app.Lines.Line[idx].CasesList, ", "))
 		app.ResultsEntryLines.SetText(strings.Join(app.Lines.Line[idx].Results, "\n"))
@@ -770,7 +767,6 @@ func (app *chengPipesApp) RefreshCases() {
 }
 
 func (app *chengPipesApp) RefreshAll() {
-	// TODO FIXME Some errror when not selected any line
 	app.RefreshLines()
 	app.RefreshCases()
 }

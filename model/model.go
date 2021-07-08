@@ -312,10 +312,7 @@ func (ls *Lines) Check() error {
 	for i := 0; i < len(ls.Line); i++ {
 		id = append(id, ls.Line[i].Id)
 	}
-
 	dupes := dup_count(id)
-	fmt.Println("DUPES", dupes)
-
 	for in, val := range dupes {
 		if val > 1 {
 			// TODO Esto puede ser un error a dialog
@@ -362,7 +359,6 @@ func (ls *Lines) RemoveLine(lineID string) {
 	// TODO: DOC
 	//var newList *Lines
 	newList := &Lines{Line: []*Line{}}
-	fmt.Println("Inside Remove")
 	if ls.Line != nil {
 
 		sliceId := []string{}
@@ -425,7 +421,6 @@ func (l *Line) Calc(c *CaseList) {
 	l.RhoV2 = make(map[string]float64)
 	if (l.CasesList[0]) != "" {
 		totalCaseLst := c.GetCasesList()
-		fmt.Println("Cases", l.CasesList)
 		Area := PipeAreaFromIn(l.Diam)
 		for i := 0; i < len(l.CasesList); i++ {
 			idx := SliceItemIdx(totalCaseLst, l.CasesList[i])
@@ -439,7 +434,6 @@ func (l *Line) Calc(c *CaseList) {
 				Rv:   c.Cas[idx].DensMix * ActualVel * ActualVel,
 			}
 
-			fmt.Println("Inside For", i, l.CasesList[i], c.Cas[idx].CaseID, l.Velocities)
 			temp1 := template.Must(template.ParseFiles("model/tempLines.gohtml"))
 			// var temp2 strin
 

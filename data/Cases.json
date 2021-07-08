@@ -25,6 +25,27 @@
    "ReqDiamMomentum": 5.974999955185133,
    "DensactGas": 2.5428512699664845,
    "DensMix": 2.5704555974591203,
+   "Croma": {
+    "Air": 0,
+    "C1": 0.98,
+    "C2": 0.02,
+    "C3": 0,
+    "CO2": 0,
+    "H2O": 0,
+    "N2": 0,
+    "O2": 0,
+    "SH2": 0,
+    "iC4": 0,
+    "iC5": 0,
+    "nC10": 0,
+    "nC4": 0,
+    "nC5": 0,
+    "nC6": 0,
+    "nC7": 0,
+    "nC8": 0,
+    "nC9": 0,
+    "neoC5": 0
+   },
    "Results": "Case \"HP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 30 [kgf/cm2g], Temperature: 15[°C], Gas MW: 2 [g/mol] / Z: 2.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1003 [kg/m3]\n   Results:\n        Actual Gas flow: 0.69 [Am3/s] / Total flow: 0.69 [m3/s].\n        Actual Gas Dens: 2.54 [kg/m3] / Dens mix (L/G): 2.57 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 76.09 [m/s] / Max Momentum (J=Rho*V2) 38.20 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.01 [m2] / Req Area Momentum 0.02 [m2]\n        Required Diam: 8.70 [in] / Required Diam 14E 4.23 [in] / Required Diam Momentum 5.97 [in]\n"
   },
   {
@@ -52,6 +73,7 @@
    "ReqDiamMomentum": 10.790497430731067,
    "DensactGas": 23.69488431154321,
    "DensMix": 28.98867017800526,
+   "Croma": null,
    "Results": "Case \"PAMPA_MP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 35 [kgf/cm2g], Temperature: 50[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 20 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 300 m3/d @ 1005 [kg/m3]\n   Results:\n        Actual Gas flow: 0.67 [Am3/s] / Total flow: 0.67 [m3/s].\n        Actual Gas Dens: 23.69 [kg/m3] / Dens mix (L/G): 28.99 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 22.66 [m/s] / Max Momentum (J=Rho*V2) 11.37 [m/s]\n        Required Area: 0.04 [m2] / Required Area 14E 0.03 [m2] / Req Area Momentum 0.06 [m2]\n        Required Diam: 8.58 [in] / Required Diam 14E 7.65 [in] / Required Diam Momentum 10.79 [in]\n"
   },
   {
@@ -79,6 +101,7 @@
    "ReqDiamMomentum": 3.791406519799826,
    "DensactGas": 8.906084486979477,
    "DensMix": 8.906084486979477,
+   "Croma": null,
    "Results": "Case \"Air\"\n    Gas:\n        Gas flow: 92 [E3M3D] @ Pressure: 7 [kgf/cm2g], Temperature: 25[°C], Gas MW: 28 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 0 m3/d @ 0 [kg/m3] / Heavy Liquid Flow: 0 m3/d @ 0 [kg/m3]\n   Results:\n        Actual Gas flow: 0.15 [Am3/s] / Total flow: 0.15 [m3/s].\n        Actual Gas Dens: 8.91 [kg/m3] / Dens mix (L/G): 8.91 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 40.88 [m/s] / Max Momentum (J=Rho*V2) 20.52 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.00 [m2] / Req Area Momentum 0.01 [m2]\n        Required Diam: 4.05 [in] / Required Diam 14E 2.69 [in] / Required Diam Momentum 3.79 [in]\n"
   },
   {
@@ -106,6 +129,7 @@
    "ReqDiamMomentum": 8.576848341239467,
    "DensactGas": 59.8622485924767,
    "DensMix": 72.62451289459987,
+   "Croma": null,
    "Results": "Case \"PAMPA_AP\"\n    Gas:\n        Gas flow: 1700 [E3M3D] @ Pressure: 90 [kgf/cm2g], Temperature: 50[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 20 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 300 m3/d @ 1005 [kg/m3]\n   Results:\n        Actual Gas flow: 0.26 [Am3/s] / Total flow: 0.27 [m3/s].\n        Actual Gas Dens: 59.86 [kg/m3] / Dens mix (L/G): 72.62 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 14.31 [m/s] / Max Momentum (J=Rho*V2) 7.19 [m/s]\n        Required Area: 0.01 [m2] / Required Area 14E 0.02 [m2] / Req Area Momentum 0.04 [m2]\n        Required Diam: 5.42 [in] / Required Diam 14E 6.08 [in] / Required Diam Momentum 8.58 [in]\n"
   },
   {
@@ -133,6 +157,7 @@
    "ReqDiamMomentum": 6.259353629849586,
    "DensactGas": 2.091551532841127,
    "DensMix": 2.1143351547363824,
+   "Croma": null,
    "Results": "Case \"3ETSTD-1\"\n    Gas:\n        Gas flow: 188 [E3M3D] @ Pressure: 2 [kgf/cm2g], Temperature: 35[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1000 [kg/m3]\n   Results:\n        Actual Gas flow: 0.84 [Am3/s] / Total flow: 0.84 [m3/s].\n        Actual Gas Dens: 2.09 [kg/m3] / Dens mix (L/G): 2.11 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 83.90 [m/s] / Max Momentum (J=Rho*V2) 42.11 [m/s]\n        Required Area: 0.05 [m2] / Required Area 14E 0.01 [m2] / Req Area Momentum 0.02 [m2]\n        Required Diam: 9.57 [in] / Required Diam 14E 4.43 [in] / Required Diam Momentum 6.26 [in]\n"
   },
   {
@@ -160,6 +185,7 @@
    "ReqDiamMomentum": 5.5150111490065,
    "DensactGas": 3.470748059607449,
    "DensMix": 3.5086063034117903,
+   "Croma": null,
    "Results": "Case \"3ETSTD-2\"\n    Gas:\n        Gas flow: 188 [E3M3D] @ Pressure: 4 [kgf/cm2g], Temperature: 35[°C], Gas MW: 18 [g/mol] / Z: 1.\n   Liquids:\n        Light Liquid Flow: 1 m3/d @ 650 [kg/m3] / Heavy Liquid Flow: 1 m3/d @ 1005 [kg/m3]\n   Results:\n        Actual Gas flow: 0.50 [Am3/s] / Total flow: 0.50 [m3/s].\n        Actual Gas Dens: 3.47 [kg/m3] / Dens mix (L/G): 3.51 [kg/m3]\n        Max Vel: 18.00 [m/s] / Max Vel 14E 65.13 [m/s] / Max Momentum (J=Rho*V2) 32.69 [m/s]\n        Required Area: 0.03 [m2] / Required Area 14E 0.01 [m2] / Req Area Momentum 0.02 [m2]\n        Required Diam: 7.43 [in] / Required Diam 14E 3.91 [in] / Required Diam Momentum 5.52 [in]\n"
   }
  ]
