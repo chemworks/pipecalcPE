@@ -48,7 +48,7 @@ func widgetNewEntryNumber(s string) *widget.Entry {
 		if s != "" {
 			err := checkFloat(s)
 			if err != nil {
-				return errors.New("")
+				return errors.New("Numeric input")
 			}
 			return nil
 
