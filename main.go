@@ -186,7 +186,6 @@ func (app *chengPipesApp) setFrmLinesToLines() {
 		actName := app.Line.Tag
 		linesLst := app.Lines.GetLineList()
 		idx := model.SliceItemIdx(linesLst, actName)
-		fmt.Println("idx", idx)
 		app.Lines.Line[idx].Tag = app.LineTag.Text
 		app.Lines.Line[idx].CasesList = strings.Split(app.LineCases.Text, ",")
 		app.Lines.Line[idx].Results = app.Line.Results
