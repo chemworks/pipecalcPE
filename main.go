@@ -39,7 +39,26 @@ func compFileName(path, file string) string {
 
 // function to create an empty widget with place holder and NON Wraping
 // TODO mover esto no va aca en el medio
-func widgetNewEntry(s string) *widget.Entry {
+func widgetNewEntryNumber(s string) *widget.Entry {
+	w := widget.NewEntry()
+	w.SetPlaceHolder(s)
+	w.Wrapping = fyne.TextWrapOff
+
+	w.Validator = func(s string) error {
+		if s != "" {
+			err := checkFloat(s)
+			if err != nil {
+				return errors.New("")
+			}
+			return nil
+
+		}
+		return nil
+	}
+	return w
+}
+
+func widgetNewEntryStr(s string) *widget.Entry {
 	w := widget.NewEntry()
 	w.SetPlaceHolder(s)
 	w.Wrapping = fyne.TextWrapOff
@@ -309,7 +328,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		app.setPipe(app.Lines.Line[id])
 	}
 	//
-	app.LineTag = widgetNewEntry("X\"-HGXXX-CAXX-B")
+	app.LineTag = widgetNewEntryStr("X\"-HGXXX-CAXX-B")
 	// refresh on changed line works like a charm
 	app.LineTag.OnChanged = func(s string) {
 		if app.Line != nil {
@@ -403,42 +422,42 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 
 	//------------------------------------------------------------------------//
 	// for Cases
-	app.CaseTag = widgetNewEntry("Case N°")
+	app.CaseTag = widgetNewEntryStr("Case N°")
 	app.CaseTag.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.CaseID = s
 			app.ListCases.Refresh()
 		}
 	}
-	app.GasFlow = widgetNewEntry("500")
+	app.GasFlow = widgetNewEntryNumber("500")
 	app.GasFlow.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.GasFlow = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.Press = widgetNewEntry("1")
+	app.Press = widgetNewEntryNumber("1")
 	app.Press.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.Pressure = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.Temp = widgetNewEntry("15")
+	app.Temp = widgetNewEntryNumber("15")
 	app.Temp.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.Temperature = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.MW = widgetNewEntry("18")
+	app.MW = widgetNewEntryNumber("18")
 	app.MW.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.MW = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.Z = widgetNewEntry("0.9")
+	app.Z = widgetNewEntryNumber("0.9")
 	app.Z.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.Z = StringToFloat64(s)
@@ -447,36 +466,37 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 	}
 
 	app.MultyFlow = widget.NewRadioGroup([]string{"True", "False"}, func(string) {})
-	app.LlFlow = widgetNewEntry("1")
+	app.LlFlow = widgetNewEntryNumber("1")
 	app.LlFlow.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.LightLiquidFlow = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.HlFlow = widgetNewEntry("1")
+	app.HlFlow = widgetNewEntryNumber("1")
 	app.HlFlow.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.HeavyLiquidFlow = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.LlDens = widgetNewEntry("650")
+	app.LlDens = widgetNewEntryNumber("650")
 	app.LlDens.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.LightLiquidDens = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
-	app.HlDens = widgetNewEntry("1000")
+	app.HlDens = widgetNewEntryNumber("1000")
 	app.HlDens.OnChanged = func(s string) {
 		if app.Case != nil {
 			app.Case.HeavyLiquidDens = StringToFloat64(s)
 			app.ListCases.Refresh()
 		}
 	}
+
 	// setting from to croma and his functions on change
-	app.CC1 = widgetNewEntry("100")
+	app.CC1 = widgetNewEntryNumber("100")
 	app.CC1.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -487,7 +507,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CC2 = widgetNewEntry("0")
+	app.CC2 = widgetNewEntryNumber("0")
 	app.CC2.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -498,7 +518,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CC3 = widgetNewEntry("0")
+	app.CC3 = widgetNewEntryNumber("0")
 	app.CC3.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -509,7 +529,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CiC4 = widgetNewEntry("0")
+	app.CiC4 = widgetNewEntryNumber("0")
 	app.CiC4.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -520,7 +540,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CnC4 = widgetNewEntry("0")
+	app.CnC4 = widgetNewEntryNumber("0")
 	app.CnC4.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -531,7 +551,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CiC5 = widgetNewEntry("0")
+	app.CiC5 = widgetNewEntryNumber("0")
 	app.CiC5.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -542,7 +562,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CnC5 = widgetNewEntry("0")
+	app.CnC5 = widgetNewEntryNumber("0")
 	app.CnC5.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -553,7 +573,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CC6 = widgetNewEntry("0")
+	app.CC6 = widgetNewEntryNumber("0")
 	app.CC6.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -564,7 +584,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CC7 = widgetNewEntry("0")
+	app.CC7 = widgetNewEntryNumber("0")
 	app.CC7.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -575,7 +595,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CC8 = widgetNewEntry("0")
+	app.CC8 = widgetNewEntryNumber("0")
 	app.CC8.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -586,7 +606,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CN2 = widgetNewEntry("0")
+	app.CN2 = widgetNewEntryNumber("0")
 	app.CN2.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -597,7 +617,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CCO2 = widgetNewEntry("0")
+	app.CCO2 = widgetNewEntryNumber("0")
 	app.CCO2.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -608,7 +628,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CH2O = widgetNewEntry("0")
+	app.CH2O = widgetNewEntryNumber("0")
 	app.CH2O.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -619,7 +639,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CSH2 = widgetNewEntry("0")
+	app.CSH2 = widgetNewEntryNumber("0")
 	app.CSH2.OnChanged = func(s string) {
 		if s != "" {
 			app.sumCroma()
@@ -630,7 +650,7 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 			app.CTotal.Refresh()
 		}
 	}
-	app.CTotal = widgetNewEntry("0")
+	app.CTotal = widgetNewEntryNumber("0")
 
 	app.ResultsEntryCases = widget.NewMultiLineEntry()
 	app.ResultsEntryCases.Wrapping = fyne.TextWrapOff
@@ -928,5 +948,14 @@ func NewUriFromLocalPath() fyne.ListableURI {
 func StringToFloat64(s string) float64 {
 	f, _ := strconv.ParseFloat(s, 64)
 	return f
+
+}
+
+func checkFloat(s string) error {
+	_, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return err
+	}
+	return nil
 
 }
