@@ -82,6 +82,8 @@ type Case struct {
 	DensActGas float64 `json:"DensactGas"`
 	//Density
 	DensMix float64 `json:"DensMix"`
+	// Croma mol percent adjusted
+	Croma map[string]float64 `json:"Croma"`
 	// Saves the resutls to a case string
 	Results string `json:"Results"`
 }
@@ -103,7 +105,6 @@ func (c *Case) Calc() error {
 		c.DensMix = c.DensActGas
 		c.TotalFlow = c.ActFlow
 	}
-	fmt.Println(c.ActFlow)
 	c.MaxVel = 18.0
 	c.MaxVelMomentum = VelMaxJmomentum(c.DensMix)
 	c.MaxVel14E = MaxVelAPI14E(c.DensMix)
@@ -115,7 +116,6 @@ func (c *Case) Calc() error {
 	c.ReqDiamMomentum = DiamFromA(c.ReqAreaMomentum)
 
 	// TODO Refactor a LOT
-	fmt.Println("-----RESU")
 	//temp1 := template.New("result")
 	//temp1, _ = temp1.Parse("Actual Gas Flow {{.ActFlow}}")
 	temp1 := template.Must(template.ParseFiles("model/tempCases.gohtml"))
@@ -419,7 +419,6 @@ type ResultsLines struct {
 
 // TODO DOC
 func (l *Line) Calc(c *CaseList) {
-	fmt.Println("Size of Caseslst", l.CasesList, len(l.CasesList))
 	l.Results = []string{}
 	l.ResultsCases = []string{}
 	l.Velocities = make(map[string]float64)

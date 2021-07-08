@@ -120,6 +120,32 @@ func (app *chengPipesApp) sumCroma() {
 	app.CTotal.SetText(sumtxt)
 }
 
+//Save croma to case,
+func (app *chengPipesApp) setCromaToCase() {
+	b := &chengcroma.Croma{
+		MolFrac: map[string]float64{
+			"C1":  StringToFloat64(app.CC1.Text),
+			"C2":  StringToFloat64(app.CC2.Text),
+			"C3":  StringToFloat64(app.CC3.Text),
+			"iC4": StringToFloat64(app.CiC4.Text),
+			"nC4": StringToFloat64(app.CnC4.Text),
+			"iC5": StringToFloat64(app.CiC5.Text),
+			"nC5": StringToFloat64(app.CnC5.Text),
+			"nC6": StringToFloat64(app.CC6.Text),
+			"nC7": StringToFloat64(app.CC7.Text),
+			"nC8": StringToFloat64(app.CC8.Text),
+			"N2":  StringToFloat64(app.CN2.Text),
+			"CO2": StringToFloat64(app.CCO2.Text),
+			"H2O": StringToFloat64(app.CH2O.Text),
+			"SH2": StringToFloat64(app.CSH2.Text),
+		},
+	}
+	app.Case.Croma = map[string]float64{}
+	app.Case.Croma = b.CromaNorm()
+	b.Calc(app.Case.Pressure, app.Case.Temperature)
+	app.Case.MW = b.MW
+	app.Case.Z = b.Z
+}
 func (app *chengPipesApp) getFilenames() (string, string) {
 	if app.SavePath != "" {
 		fileC := compFileName(app.SavePath, fileNameCases)
@@ -655,10 +681,8 @@ func (app *chengPipesApp) makeUI(win fyne.Window) fyne.CanvasObject {
 		widget.NewFormItem("", widget.NewButton("Calc", func() {
 			// TODO El Nombre nada claro
 			if app.CTotal.Text != "" {
-				// TODO FIXME: must Be calculated
-				// SET frm to Croma
-				app.MW.SetText(app.CTotal.Text)
-				app.Z.SetText(app.CTotal.Text)
+				// Normalize and set
+				app.setCromaToCase()
 			}
 			app.setFrmCasesToCases()
 			app.Cases.CalcAll()
@@ -747,7 +771,6 @@ func (app *chengPipesApp) RefreshCases() {
 
 func (app *chengPipesApp) RefreshAll() {
 	// TODO FIXME Some errror when not selected any line
-	fmt.Println("RefreshAll------FIXEM")
 	app.RefreshLines()
 	app.RefreshCases()
 }
